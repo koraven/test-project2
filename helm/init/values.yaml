@@ -1,0 +1,5 @@
+volumesize:
+  prometheus: 5Gi
+  grafana: 2Gi
+  mysql: 3Gi
+  alertmanager: 2Gi

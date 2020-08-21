@@ -1,0 +1,8 @@
+
+PV names:
+"alertmanager-{{ include "init.fullname" . }}"
+"prometheus-{{ include "init.fullname" . }}"
+"grafana-{{ include "init.fullname" . }}"
+"mysql-{{ include "init.fullname" . }}"
+
+SC name: {{ include "init.fullname" . }}

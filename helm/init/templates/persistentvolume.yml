@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: alertmanager-{{ include "init.fullname" . }}
+  labels:
+    type: local
+    {{- include "init.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "init.fullname" . }}
+  capacity:
+    storage: {{ .Values.volumesize.alertmanager }} 
+  accessModes:
+    - ReadWriteOnce 
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/alertmanager" 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "prometheus-{{ include "init.fullname" . }}"
+  labels:
+    type: local
+    {{- include "init.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "init.fullname" . }}
+  capacity:
+    storage: {{ .Values.volumesize.prometheus }} 
+  accessModes:
+    - ReadWriteOnce 
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/prometheus" 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "grafana-{{ include "init.fullname" . }}"
+  labels:
+    type: local
+    {{- include "init.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "init.fullname" . }}
+  capacity:
+    storage: {{ .Values.volumesize.grafana }} 
+  accessModes:
+    - ReadWriteOnce 
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/grafana" 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "mysql-{{ include "init.fullname" . }}"
+  labels:
+    type: local
+    {{- include "init.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "init.fullname" . }}
+  capacity:
+    storage: {{ .Values.volumesize.mysql }} 
+  accessModes:
+    - ReadWriteOnce 
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/mysql" 
